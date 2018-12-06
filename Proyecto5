@@ -1,0 +1,70 @@
+import processing.video.*;
+import processing.sound.*;
+
+SoundFile file1;
+
+Movie movie1;
+Movie movie2;
+
+int p=1;
+int totalE = 0;
+int inicio;
+int transcurso;
+int limite = 15000;
+int value = 0;
+int contador=0;
+
+
+//Imagenes
+PImage img1;
+PImage img2;
+PImage img3;
+PImage img4;
+PImage img6;
+
+PFont  font;
+
+VE ve;
+Esfera[] esferas;      
+Catcher catcher;   
+Tiempo tiempo;  
+
+void setup() {
+  size(900, 500);
+  
+  //Sonido
+  file1 = new SoundFile(this,"Sonido1.aif");
+  file1.play();
+  file1.loop();
+  
+  //Imagenes
+  img1 = loadImage("img1.jpg");
+  img2 = loadImage("img2.jpg");
+  img3 = loadImage("img3.png");
+  img4 = loadImage("img4.jpg");
+  img6 = loadImage("img6.jpg");
+  
+  //Clases
+  ve = new VE();
+  catcher = new Catcher(32); 
+  esferas = new Esfera[1000];    
+  tiempo = new Tiempo(300); 
+  
+  tiempo.start(); 
+  
+  //videos
+  movie1 = new Movie(this,"movie1.mp4");
+  movie2 = new Movie(this,"movie2.mp4");
+  movie2.loop();
+  
+  //contador de esferas
+  contador = 0;
+}
+
+void movieEvent(Movie m) {
+  m.read();
+}
+
+void draw() {
+  SeleccionPantalla();
+}
